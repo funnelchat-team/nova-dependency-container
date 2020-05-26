@@ -1,6 +1,6 @@
 <template>
-	<div v-if="dependenciesSatisfied">
-		<div v-for="childField in field.fields">
+	<div v-if="dependenciesSatisfied" class="flex-wrap flex w-full">
+		<div v-for="childField in field.fields" class="w-1/2">
 			<component
 				:is="'form-' + childField.component"
 				:errors="errors"
