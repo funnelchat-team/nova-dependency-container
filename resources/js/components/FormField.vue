@@ -1,6 +1,6 @@
 <template>
-	<div v-if="dependenciesSatisfied" class="flex-wrap flex w-full">
-		<div v-for="childField in field.fields" class="w-1/2">
+	<div v-if="dependenciesSatisfied" class="flex-wrap" :class="fieldClasses">
+		<div v-for="childField in field.fields" :class="fieldClasses2">
 			<component
 				:is="'form-' + childField.component"
 				:errors="errors"
@@ -24,14 +24,33 @@
 		mounted() {
 			this.registerDependencyWatchers(this.$root, function() {
 				this.updateDependencyStatus();
+				console.log(this.resourceName)
 			});
+
 		},
 
 		data() {
 			return {
 				dependencyValues: {},
 				dependenciesSatisfied: false,
+
+
 			}
+		},
+
+		computed: {
+			 fieldClasses() {
+                if(this.resourceName == 'settings'){
+                	return ''
+                }
+                return "flex w-full"
+            },
+            fieldClasses2() {
+                if(this.resourceName == 'settings'){
+                	return ''
+                }
+                return "w-1/2"
+            },
 		},
 
 		methods: {
