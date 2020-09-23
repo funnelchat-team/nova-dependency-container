@@ -1,7 +1,10 @@
 <template>
   <div v-if="dependenciesSatisfied" class="flex-wrap" :class="fieldClasses">
-    <!-- <div v-for="childField in field.fields" :class="fieldClasses2"> -->
-    <div v-for="childField in field.fields" :key="childField">
+    <div
+      v-for="childField in field.fields"
+      :class="fieldClasses2"
+      :key="childField"
+    >
       <component
         :is="'form-' + childField.component"
         :errors="errors"
@@ -47,7 +50,7 @@ export default {
       if (this.resourceName == "settings") {
         return "";
       }
-      return "w-1/2";
+      return "w-full";
     },
   },
 
