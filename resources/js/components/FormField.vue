@@ -1,19 +1,15 @@
 <template>
   <div v-if="dependenciesSatisfied" class="flex-wrap" :class="fieldClasses">
-    <div
+    <component
       v-for="childField in field.fields"
-      
       :key="childField"
-    >
-      <component
-        :is="'form-' + childField.component"
-        :errors="errors"
-        :resource-id="resourceId"
-        :resource-name="resourceName"
-        :field="childField"
-        :ref="'field-' + childField.attribute"
-      />
-    </div>
+      :is="'form-' + childField.component"
+      :errors="errors"
+      :resource-id="resourceId"
+      :resource-name="resourceName"
+      :field="childField"
+      :ref="'field-' + childField.attribute"
+    />
   </div>
 </template>
 
@@ -28,7 +24,7 @@ export default {
   mounted() {
     this.registerDependencyWatchers(this.$root, function () {
       this.updateDependencyStatus();
-      console.log(this.field);
+      console.log(this.resourceName);
     });
   },
 
