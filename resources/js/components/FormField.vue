@@ -24,7 +24,6 @@ export default {
   mounted() {
     this.registerDependencyWatchers(this.$root, function () {
       this.updateDependencyStatus();
-      console.log(this.resourceName);
     });
   },
 
