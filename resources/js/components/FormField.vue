@@ -2,7 +2,7 @@
   <div v-if="dependenciesSatisfied" class="flex-wrap" :class="fieldClasses">
     <div
       v-for="childField in field.fields"
-      :class="fieldClasses2"
+      
       :key="childField"
     >
       <component
@@ -28,7 +28,7 @@ export default {
   mounted() {
     this.registerDependencyWatchers(this.$root, function () {
       this.updateDependencyStatus();
-      console.log(this.resourceName);
+      console.log(this.field);
     });
   },
 
